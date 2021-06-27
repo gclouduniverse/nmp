@@ -1,1 +1,1 @@
-include container/*
+include nmp/container/*
