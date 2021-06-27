@@ -72,4 +72,4 @@ def _deploy_model(
 # upload_model_sample("ml-lab-152505", "us-west1", "test-poc", "us.gcr.io/ml-lab-152505/model-poc")
 # projects/183488370666/locations/us-west1/models/2080170446635925504
 # _deploy_model("ml-lab-152505", "us-west1", "projects/183488370666/locations/us-west1/models/2080170446635925504", deployed_model_display_name="test-poc")
-deploy_model("ml-lab-152505", "us-west1", "test-poc", "us.gcr.io/ml-lab-152505/model-poc")
+# deploy_model("ml-lab-152505", "us-west1", "test-poc", "us.gcr.io/ml-lab-152505/model-poc")
