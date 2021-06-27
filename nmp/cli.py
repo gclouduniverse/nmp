@@ -33,6 +33,8 @@ def main():
 
     args = parser.parse_args()
 
+    if args.h or args.help:
+        return
     if args.build:
         create_model(args.tag, args.path, args.notebook)
     if args.deploy:
