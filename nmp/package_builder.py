@@ -9,15 +9,15 @@ from nbformat import read
 
 
 def create_model(tag: str,
-                 src_folder: Optional[str] = ".",
+                 src_folder: Optional[str],
                  main_nb_name: Optional[str] = "main.ipynb"):
     with tempfile.TemporaryDirectory() as tmpdir:
         target_dir = os.path.join(tmpdir, "container/")
         prediction_file = os.path.join(target_dir, "prediction.py")
-        print("Moving content of the current dir to the temp location")
-        shutil.copytree(src_folder, target_dir, dirs_exist_ok=True)
         print("Preparing Docker env")
         _move_docker_content_to_temp_dir(target_dir)
+        print("Moving content of the current dir to the temp location")
+        shutil.copytree(src_folder, target_dir, dirs_exist_ok=True)
         print("Extracting prediction logic from the notebok")
         _extract_prediction_logic(main_nb_name, prediction_file)
         print("Building and pushing docker container")
@@ -54,5 +54,5 @@ def _build_and_push_docker(path, tag):
     client.images.push(tag)
 
 
-create_model("us.gcr.io/ml-lab-152505/model-poc", main_nb_name="test.ipynb")
+# create_model("us.gcr.io/ml-lab-152505/model-poc", main_nb_name="test.ipynb")
 # create_model()

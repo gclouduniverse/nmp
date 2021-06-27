@@ -3,19 +3,18 @@ from typing import Optional, Dict, Sequence, Tuple
 from google.cloud import aiplatform
 
 
-def create_endpoint_sample(project: str, display_name: str, location: str):
-    aiplatform.init(project=project, location=location)
+def deploy_model(project: str,
+    location: str,
+    display_name: str,
+    serving_container_image_uri: str,):
+    print("Uploading model")
+    model = _upload_model(project, location, display_name, serving_container_image_uri)
+    print(f"model: {model.resource_name}")
+    print("Deploying model (this might take a LONG.... time)")
+    _deploy_model(project, location, model.resource_name)
 
-    endpoint = aiplatform.Endpoint.create(
-        display_name=display_name, project=project, location=location,
-    )
 
-    print(endpoint.display_name)
-    print(endpoint.resource_name)
-    return endpoint
-
-
-def upload_model_sample(
+def _upload_model(
     project: str,
     location: str,
     display_name: str,
@@ -40,7 +39,7 @@ def upload_model_sample(
     return model
 
 
-def deploy_model_with_automatic_resources_sample(
+def _deploy_model(
     project,
     location,
     model_name: str,
@@ -72,4 +71,5 @@ def deploy_model_with_automatic_resources_sample(
 # projects/183488370666/locations/us-west1/endpoints/7882003035340144640
 # upload_model_sample("ml-lab-152505", "us-west1", "test-poc", "us.gcr.io/ml-lab-152505/model-poc")
 # projects/183488370666/locations/us-west1/models/2080170446635925504
-deploy_model_with_automatic_resources_sample("ml-lab-152505", "us-west1", "projects/183488370666/locations/us-west1/models/2080170446635925504", deployed_model_display_name="test-poc")
+# _deploy_model("ml-lab-152505", "us-west1", "projects/183488370666/locations/us-west1/models/2080170446635925504", deployed_model_display_name="test-poc")
+deploy_model("ml-lab-152505", "us-west1", "test-poc", "us.gcr.io/ml-lab-152505/model-poc")
