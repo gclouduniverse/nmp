@@ -1,7 +1,7 @@
 import argparse
 
-from nmp.package_builder import create_model
-from nmp.package_deployer import deploy_model
+from package_builder import create_model
+from package_deployer import deploy_model
 
 
 def main():
@@ -31,3 +31,7 @@ def main():
         create_model(args.tag, args.path, args.notebook)
     if args.action == "deploy":
         deploy_model(args.project, args.location, args.name, args.tag)
+
+
+if __name__ == '__main__':
+    main()
