@@ -1,7 +1,7 @@
 import argparse
 
 from nmp.package_builder import create_model
-from nmp.package_deployer import deploy_model
+from vaip import model_deployer
 
 
 def main():
@@ -30,4 +30,4 @@ def main():
     if args.action == "build":
         create_model(args.tag, args.path, args.notebook)
     if args.action == "deploy":
-        deploy_model(args.project, args.location, args.name, args.tag)
+        model_deployer.deploy_model(args.project, args.location, args.name, args.tag)
