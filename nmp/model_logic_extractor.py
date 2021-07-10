@@ -19,24 +19,9 @@ def create_model(tag: str,
         prediction_file = os.path.join(
             target_dir, constants.MAIN_PREDICTION_FILE)
         shutil.copytree(src_folder, target_dir, dirs_exist_ok=True)
-<<<<<<< HEAD:nmp/model_logic_extractor.py
         print("Extracting prediction logic from the notebok")
         _extract_prediction_logic(main_nb_name, prediction_file)
         model_builder.build_model(tag, target_dir)
-=======
-        print("Extracting prediction logic from the notebook")
-        nb_path = os.path.join(src_folder, main_nb_name)
-        print(f"Notebook path: {nb_path}")
-        _extract_prediction_logic(nb_path, prediction_file)
-        print(f"Building and pushing docker container in path: {target_dir}")
-        _build_and_push_docker(target_dir, tag)
-        print("done")
->>>>>>> cc9ab668486cc61b5480c6938c3a74d943a47f62:nmp/package_builder.py
-
-
-def _move_docker_content_to_temp_dir(target_dir):
-    src = os.path.join(os.path.dirname(__file__), "container/")
-    shutil.copytree(src, target_dir, dirs_exist_ok=True)
 
 
 def _extract_prediction_logic(nb_file_name, target_file):

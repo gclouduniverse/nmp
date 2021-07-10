@@ -9,7 +9,7 @@ if sys.version_info < (3, 8):
 
 setup(
     name="nmp",
-    version="2",
+    version="3",
     author="Viacheslav Kovalevskyi",
     author_email="viacheslav@kovalevskyi.com",
     packages=find_packages(),
@@ -21,5 +21,5 @@ setup(
     url="http://pypi.python.org/pypi/nmp/",
     license="LICENSE",
     description="Notebook Model Packager for Vertex AI",
-    install_requires=open("requirements.txt").read().split("\n"),
+    install_requires=["nbformat==5.1.*", "vaip=3.1"],
 )
