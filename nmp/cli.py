@@ -1,6 +1,6 @@
 import argparse
 
-from nmp.package_builder import create_model
+from nmp.model_logic_extractor import create_model
 from vaip import model_deployer
 
 
@@ -11,7 +11,7 @@ def main():
                                 help="Docker Tag To Use With Build And/Or Deploy")
     parser.add_argument("action", choices=["build", "deploy"],
                                 help="action")
-    builder_group = parser.add_argument_group("build")
+    builder_group = parser.add_argument_group("build")gsw
     builder_group.add_argument("--path", type=str, dest="path", default=".",
                                 help="path with Notebook and other files")
     builder_group.add_argument("--notebook", type=str, dest="notebook",
@@ -31,3 +31,7 @@ def main():
         create_model(args.tag, args.path, args.notebook)
     if args.action == "deploy":
         model_deployer.deploy_model(args.project, args.location, args.name, args.tag)
+
+
+if __name__ == '__main__':
+    main()

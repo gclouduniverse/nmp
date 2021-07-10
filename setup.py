@@ -1,8 +1,15 @@
+import sys
+
 from setuptools import setup, find_packages
+
+
+if sys.version_info < (3, 8):
+    sys.exit("Sorry, Python < 3.8 is not yet supported")
+
 
 setup(
     name="nmp",
-    version="1",
+    version="2",
     author="Viacheslav Kovalevskyi",
     author_email="viacheslav@kovalevskyi.com",
     packages=find_packages(),
