@@ -21,5 +21,5 @@ setup(
     url="http://pypi.python.org/pypi/nmp/",
     license="LICENSE",
     description="Notebook Model Packager for Vertex AI",
-    install_requires=["nbformat==5.1.*", "vaip=3.1"],
+    install_requires=["nbformat==5.1.*", "vaip==3.1"],
 )

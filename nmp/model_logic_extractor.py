@@ -21,7 +21,7 @@ def create_model(tag: str,
         shutil.copytree(src_folder, target_dir, dirs_exist_ok=True)
         print("Extracting prediction logic from the notebok")
         _extract_prediction_logic(main_nb_name, prediction_file)
-        model_builder.build_model(tag, target_dir)
+        model_builder.create_model(tag, target_dir)
 
 
 def _extract_prediction_logic(nb_file_name, target_file):
@@ -40,4 +40,3 @@ def _find_cell_with_prediction_logic(nb_object):
                     cell["metadata"]["deployment_target"] == "prediction"):
                 return cell["source"]
     return None
-

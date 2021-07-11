@@ -11,7 +11,7 @@ def main():
                                 help="Docker Tag To Use With Build And/Or Deploy")
     parser.add_argument("action", choices=["build", "deploy"],
                                 help="action")
-    builder_group = parser.add_argument_group("build")gsw
+    builder_group = parser.add_argument_group("build")
     builder_group.add_argument("--path", type=str, dest="path", default=".",
                                 help="path with Notebook and other files")
     builder_group.add_argument("--notebook", type=str, dest="notebook",
