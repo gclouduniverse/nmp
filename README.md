@@ -76,6 +76,24 @@ GCP_MODEL_NAME=...
 nmp deploy --project "${GCP_PROJECT}" --location "${GCP_LOCATION}" --name "${GCP_MODEL_NAME}" --tag "${TAG}"
 ```
 
+If everything is correct you should be able to test it like this:
+
+```bash
+curl \
+-X POST \
+-H "Authorization: Bearer $(gcloud auth print-access-token)" \
+-H "Content-Type: application/json" \
+https://us-west1-aiplatform.googleapis.com/v1/projects/${PROJECT_ID}/locations/us-west1/endpoints/${ENDPOINT_ID}:predict \ 
+-d '{"parameters": {}, "instances": ["1", "2"]}'
+{
+  "predictions": [
+    "1",
+    "1"
+  ],
+  "deployedModelId": "..."
+}
+```
+
 # Details
 
 It is based on the High level GCP Vertex AI Prediction SDK: vaip.
