@@ -1,3 +1,9 @@
+# WARNING
+
+nmp now part of workbench SDK/CLI: http://github.com/gclouduniverse/workbench
+
+this repository is no longer maintained.
+
 # Notebook Model Packer
 
 Simple SDK and CLI that allows to extract prediction logic directly from the Jupyter Notebooks and deploy them on the GCP Vertex AI Prediction service.
